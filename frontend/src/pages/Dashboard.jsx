@@ -217,7 +217,7 @@ const Dashboard = () => {
               labelStyle={{ color: 'var(--text-muted)', marginBottom: '4px' }}
             />
             <Area 
-              type="natural" 
+              type="monotone" 
               dataKey="sales" 
               stroke="var(--accent-blue)" 
               strokeWidth={3} 
