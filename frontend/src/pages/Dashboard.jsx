@@ -148,7 +148,7 @@ const Dashboard = () => {
         />
       </div>
 
-      <div className="glass-panel" style={{ padding: '32px 16px', height: '400px' }}>
+      <div className="glass-panel" style={{ padding: '32px 16px' }}>
         <div className="flex justify-between items-center mobile-flex-col" style={{ marginBottom: '24px', gap: '16px', alignItems: 'flex-start' }}>
           <div>
             <h3 style={{ fontSize: '20px', fontWeight: 600, marginBottom: '4px' }}>Revenue Overview</h3>
@@ -161,7 +161,7 @@ const Dashboard = () => {
           </select>
         </div>
         
-        <div style={{ position: 'relative', width: '100%', height: '85%', overflowX: 'auto', overflowY: 'hidden' }}>
+        <div style={{ position: 'relative', width: '100%', height: '350px', overflowX: 'auto', overflowY: 'hidden', paddingBottom: '10px' }}>
           {chartLoading && (
             <div style={{
               position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
