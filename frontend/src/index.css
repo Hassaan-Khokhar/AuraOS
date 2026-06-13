@@ -147,133 +147,7 @@ input, textarea, select {
   display: none;
 }
 
-@media (max-width: 768px) {
-  .dashboard-layout {
-    display: block;
-    padding-bottom: 80px;
-  }
 
-  .mobile-top-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 20px;
-    background: rgba(15, 23, 42, 0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--glass-border);
-    position: sticky;
-    top: 0;
-    z-index: 50;
-  }
-  
-  .sidebar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 70px;
-    padding: 0 8px;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    border-right: none;
-    border-top: 1px solid var(--glass-border);
-    z-index: 50;
-    background: rgba(15, 23, 42, 0.85);
-  }
-  
-  .sidebar-brand {
-    display: none;
-  }
-  
-  .sidebar nav {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-around;
-    align-items: center;
-    padding-bottom: 0;
-  }
-  
-  .nav-link {
-    flex-direction: column;
-    gap: 4px;
-    font-size: 10px;
-    padding: 8px;
-    margin-bottom: 0;
-    border-top: 3px solid transparent;
-    border-left: none;
-    border-radius: 0;
-  }
-  
-  .nav-link.active {
-    background: transparent;
-    border-left: none;
-    border-top: 3px solid var(--accent-blue);
-    border-radius: 0;
-    color: var(--accent-blue);
-  }
-
-  .nav-link span {
-    display: none;
-  }
-
-  .logout-btn {
-    margin-top: 0;
-  }
-  
-  .main-content {
-    padding: 16px;
-  }
-  
-  .page-title {
-    font-size: 24px;
-  }
-  
-  .flex {
-    flex-wrap: wrap;
-  }
-  
-  .mobile-flex-col {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  
-  .mobile-hide {
-    display: none !important;
-  }
-  
-  /* Make tables horizontally scrollable with smooth UX */
-  .table-responsive {
-    display: block;
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  .page-header.flex {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-
-  .support-list-pane {
-    width: 100% !important;
-  }
-  
-  .support-detail-pane {
-    width: 100% !important;
-  }
-  
-  .mobile-hide-pane {
-    display: none !important;
-  }
-  
-  .mobile-only {
-    display: inline-flex !important;
-  }
-}
 
 .mobile-only {
   display: none !important;
@@ -406,4 +280,84 @@ input, textarea, select {
 @keyframes slideIn {
   from { transform: translateX(100%); opacity: 0; }
   to { transform: translateX(0); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .dashboard-layout {
+    display: block;
+  }
+
+  .mobile-top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  
+  .mobile-nav-active {
+    background: rgba(59, 130, 246, 0.1) !important;
+    color: var(--accent-blue) !important;
+  }
+  
+  .sidebar {
+    display: none;
+  }
+  
+  .main-content {
+    padding: 16px;
+  }
+  
+  .page-title {
+    font-size: 24px;
+  }
+  
+  .flex {
+    flex-wrap: wrap;
+  }
+  
+  .mobile-flex-col {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .mobile-hide {
+    display: none !important;
+  }
+  
+  /* Make tables horizontally scrollable with smooth UX */
+  .table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .page-header.flex {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .support-list-pane {
+    width: 100% !important;
+  }
+  
+  .support-detail-pane {
+    width: 100% !important;
+  }
+  
+  .mobile-hide-pane {
+    display: none !important;
+  }
+  
+  .mobile-only {
+    display: inline-flex !important;
+  }
 }

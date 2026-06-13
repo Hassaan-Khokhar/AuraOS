@@ -136,8 +136,8 @@ const Orders = () => {
             Loading orders...
           </div>
         ) : (
-          <div style={{ flex: 1, overflowY: 'auto', minHeight: 0 }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', tableLayout: 'fixed' }}>
+          <div style={{ flex: 1, overflow: 'auto', minHeight: 0 }}>
+            <table style={{ width: '100%', minWidth: '800px', borderCollapse: 'collapse', textAlign: 'left', tableLayout: 'fixed' }}>
               <colgroup>
                 <col style={{ width: '12%' }} />
                 <col style={{ width: '28%' }} />

@@ -161,7 +161,7 @@ const Dashboard = () => {
           </select>
         </div>
         
-        <div style={{ position: 'relative', width: '100%', height: '85%' }}>
+        <div style={{ position: 'relative', width: '100%', height: '85%', overflowX: 'auto', overflowY: 'hidden' }}>
           {chartLoading && (
             <div style={{
               position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
@@ -172,61 +172,63 @@ const Dashboard = () => {
               <span style={{ color: 'var(--accent-blue)', fontWeight: 600 }}>Updating chart...</span>
             </div>
           )}
-        <ResponsiveContainer width="100%" height="100%">
-          <AreaChart data={chartData} margin={{ top: 10, right: 15, left: 5, bottom: 30 }}>
-            <defs>
-              <linearGradient id="colorSales" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="var(--accent-blue)" stopOpacity={0.15}/>
-                <stop offset="95%" stopColor="var(--accent-blue)" stopOpacity={0}/>
-              </linearGradient>
-            </defs>
-            <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
-            <XAxis 
-              dataKey="name" 
-              stroke="var(--text-muted)" 
-              tick={{fill: 'var(--text-muted)', fontSize: 12}} 
-              axisLine={false} 
-              tickLine={false} 
-              minTickGap={days <= 7 ? 10 : 30}
-              tickMargin={12}
-            />
-            <YAxis 
-              stroke="var(--text-muted)" 
-              tick={{fill: 'var(--text-muted)', fontSize: 12}} 
-              axisLine={false} 
-              tickLine={false} 
-              tickFormatter={(value) => {
-                if (value >= 1000000) return `$${(value / 1000000).toFixed(1)}M`;
-                if (value >= 1000) return `$${(value / 1000).toFixed(1)}k`;
-                return `$${value}`;
-              }} 
-              width={55}
-              padding={{ bottom: 20 }}
-            />
-            <Tooltip 
-              cursor={{ stroke: 'rgba(255,255,255,0.1)', strokeWidth: 2, strokeDasharray: '4 4' }}
-              contentStyle={{ 
-                background: 'rgba(15, 23, 42, 0.9)', 
-                border: '1px solid var(--glass-border)',
-                borderRadius: '8px',
-                color: 'white',
-                boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.5)'
-              }}
-              formatter={(value) => [`$${value.toLocaleString()}`, 'Revenue']}
-              itemStyle={{ color: 'var(--accent-blue)', fontWeight: 600 }}
-              labelStyle={{ color: 'var(--text-muted)', marginBottom: '4px' }}
-            />
-            <Area 
-              type="monotone" 
-              dataKey="sales" 
-              stroke="var(--accent-blue)" 
-              strokeWidth={3} 
-              fillOpacity={1} 
-              fill="url(#colorSales)" 
-              activeDot={{ r: 6, fill: 'var(--bg-darker)', stroke: 'var(--accent-blue)', strokeWidth: 3 }}
-            />
-          </AreaChart>
-        </ResponsiveContainer>
+          <div style={{ minWidth: '700px', height: '100%' }}>
+            <ResponsiveContainer width="100%" height="100%">
+              <AreaChart data={chartData} margin={{ top: 10, right: 15, left: 5, bottom: 30 }}>
+                <defs>
+                  <linearGradient id="colorSales" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="var(--accent-blue)" stopOpacity={0.15}/>
+                    <stop offset="95%" stopColor="var(--accent-blue)" stopOpacity={0}/>
+                  </linearGradient>
+                </defs>
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
+                <XAxis 
+                  dataKey="name" 
+                  stroke="var(--text-muted)" 
+                  tick={{fill: 'var(--text-muted)', fontSize: 12}} 
+                  axisLine={false} 
+                  tickLine={false} 
+                  minTickGap={days <= 7 ? 10 : 30}
+                  tickMargin={12}
+                />
+                <YAxis 
+                  stroke="var(--text-muted)" 
+                  tick={{fill: 'var(--text-muted)', fontSize: 12}} 
+                  axisLine={false} 
+                  tickLine={false} 
+                  tickFormatter={(value) => {
+                    if (value >= 1000000) return `$${(value / 1000000).toFixed(1)}M`;
+                    if (value >= 1000) return `$${(value / 1000).toFixed(1)}k`;
+                    return `$${value}`;
+                  }} 
+                  width={55}
+                  padding={{ bottom: 20 }}
+                />
+                <Tooltip 
+                  cursor={{ stroke: 'rgba(255,255,255,0.1)', strokeWidth: 2, strokeDasharray: '4 4' }}
+                  contentStyle={{ 
+                    background: 'rgba(15, 23, 42, 0.9)', 
+                    border: '1px solid var(--glass-border)',
+                    borderRadius: '8px',
+                    color: 'white',
+                    boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.5)'
+                  }}
+                  formatter={(value) => [`$${value.toLocaleString()}`, 'Revenue']}
+                  itemStyle={{ color: 'var(--accent-blue)', fontWeight: 600 }}
+                  labelStyle={{ color: 'var(--text-muted)', marginBottom: '4px' }}
+                />
+                <Area 
+                  type="monotone" 
+                  dataKey="sales" 
+                  stroke="var(--accent-blue)" 
+                  strokeWidth={3} 
+                  fillOpacity={1} 
+                  fill="url(#colorSales)" 
+                  activeDot={{ r: 6, fill: 'var(--bg-darker)', stroke: 'var(--accent-blue)', strokeWidth: 3 }}
+                />
+              </AreaChart>
+            </ResponsiveContainer>
+          </div>
         </div>
       </div>
     </div>

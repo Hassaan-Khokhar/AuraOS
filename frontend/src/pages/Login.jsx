@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Hexagon, Lock } from 'lucide-react';
+import { Hexagon, Lock, UserCheck, ArrowRight } from 'lucide-react';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
@@ -27,6 +27,9 @@ const Login = () => {
       
       if (res.ok) {
         localStorage.setItem('token', data.token);
+        if (data.user && data.user.role) {
+          localStorage.setItem('role', data.user.role);
+        }
         navigate('/');
       } else {
         setError(data.error || 'Login failed');
@@ -37,6 +40,11 @@ const Login = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleDemoLogin = () => {
+    setEmail('demo@admin.com');
+    setPassword('admin123');
   };
 
   return (
@@ -107,6 +115,53 @@ const Login = () => {
             )}
           </button>
         </form>
+
+        <div 
+          onClick={handleDemoLogin}
+          className="demo-card"
+          style={{
+            marginTop: '32px',
+            padding: '16px',
+            background: 'rgba(255, 255, 255, 0.03)',
+            border: '1px solid var(--glass-border)',
+            borderRadius: '12px',
+            textAlign: 'left',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '12px'
+          }}
+          onMouseOver={(e) => {
+            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.06)';
+            e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.4)';
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.03)';
+            e.currentTarget.style.borderColor = 'var(--glass-border)';
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div style={{ 
+              background: 'rgba(59, 130, 246, 0.1)', 
+              padding: '10px', 
+              borderRadius: '8px',
+              color: 'var(--accent-blue)'
+            }}>
+              <UserCheck size={20} />
+            </div>
+            <div>
+              <p style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-main)', marginBottom: '2px' }}>
+                Recruiter Quick Access
+              </p>
+              <p style={{ fontSize: '12px', color: 'var(--text-muted)' }}>
+                Click to auto-fill demo credentials
+              </p>
+            </div>
+          </div>
+          <ArrowRight size={18} color="var(--text-muted)" style={{ opacity: 0.7 }} />
+        </div>
       </div>
     </div>
   );

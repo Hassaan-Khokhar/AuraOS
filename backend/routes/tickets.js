@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const Ticket = require('../models/Ticket');
+const demoGuard = require('../middleware/demoGuard');
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || 'dummy_key');
 
@@ -15,7 +16,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', demoGuard, async (req, res) => {
   try {
     const { customer, message } = req.body;
     
@@ -103,7 +104,7 @@ router.post('/draft-reply', async (req, res) => {
 });
 
 // Resolve / contact a ticket
-router.put('/:id/resolve', async (req, res) => {
+router.put('/:id/resolve', demoGuard, async (req, res) => {
   try {
     const { id } = req.params;
     const { reply, status } = req.body;

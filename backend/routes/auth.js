@@ -9,10 +9,16 @@ router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
     
-    // Hardcoded bypass for the user to login easily
+    // Hardcoded bypass for the owner to login easily
     if (email === 'alihassaan435@gmail.com' && password === 'admin123') {
-       const token = jwt.sign({ role: 'admin' }, process.env.JWT_SECRET, { expiresIn: '1d' });
+       const token = jwt.sign({ email, role: 'admin' }, process.env.JWT_SECRET, { expiresIn: '1d' });
        return res.json({ token, user: { email, role: 'admin' } });
+    }
+
+    // Demo account for recruiters / portfolio viewers
+    if (email === 'demo@admin.com' && password === 'admin123') {
+       const token = jwt.sign({ email, role: 'demo' }, process.env.JWT_SECRET, { expiresIn: '1d' });
+       return res.json({ token, user: { email, role: 'demo' } });
     }
 
     const user = await User.findOne({ email });

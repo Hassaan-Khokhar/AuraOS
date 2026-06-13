@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Order = require('../models/Order');
+const demoGuard = require('../middleware/demoGuard');
 
 router.get('/', async (req, res) => {
   try {
@@ -33,7 +34,7 @@ router.get('/', async (req, res) => {
 });
 
 // Create a new order
-router.post('/', async (req, res) => {
+router.post('/', demoGuard, async (req, res) => {
   try {
     const { customerEmail, totalAmount, status } = req.body;
 
@@ -58,7 +59,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', demoGuard, async (req, res) => {
   try {
     const { id } = req.params;
     const { status } = req.body;
